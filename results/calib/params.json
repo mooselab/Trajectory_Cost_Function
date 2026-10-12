@@ -1,0 +1,37 @@
+{
+  "alpha_J_per_context_token": 0.02836488521614514,
+  "beta_J_per_output_token": 1.1091785078632532,
+  "overhead_model_W": 120.30714431445239,
+  "overhead_wait_W": 120.30714431445239,
+  "idle_loaded_W": {
+    "gpu": 60.070010518378616,
+    "cpu": 60.23713379607377,
+    "total": 120.30714431445239
+  },
+  "idle_bare_W": {
+    "gpu": 33.53609861800251,
+    "cpu": 55.813330044828746,
+    "total": 89.34942866283126
+  },
+  "fit": {
+    "n_calls": 75,
+    "R2": 0.9959662183609839,
+    "MAPE_pct": 6.855800604562636
+  },
+  "free_fit": {
+    "alpha": -0.0010648651290068297,
+    "beta": -0.20025803149630406,
+    "overhead_model_W": 235.8883799197767,
+    "R2": 0.9998659171434487,
+    "condition_number_standardized": 27.911040801651502
+  },
+  "repeatability_cv": {
+    "max": 0.01810663952632766,
+    "median": 0.00850050338529143
+  },
+  "cache_hit": {
+    "n": 75,
+    "median_cached_fraction": 0.99609375,
+    "median_energy_ratio_hit_over_miss": 0.8053553561628859
+  }
+}
