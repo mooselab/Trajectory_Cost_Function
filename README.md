@@ -78,6 +78,8 @@ FlashInfer, 32K maximum context) are set and explained in `02_serve_vllm.sh` and
 | `tasks/candidates.txt`, `tasks/oracle_ok.txt`, `tasks/oracle_times.csv` | Selection steps |
 | `tasks/pilot.txt`, `tasks/pilot2.txt` | Pilot task lists |
 | `tasks/final.txt` | The 20 tasks of the formal run |
+| `data/calib/idle_bare.csv`, `data/calib/idle_loaded.csv` | Idle baselines without and with the model loaded (300 s each) |
+| `data/calib/samples.csv`, `data/calib/calls.jsonl` | Energy samples and call log of the microbenchmark (150 calls) |
 | `results/calib/params.json` | Idle powers, fitted coefficients, repeatability |
 | `results/calib/calls_energy.csv` | Measured GPU and CPU energy of every microbenchmark call |
 | `results/trials_formal.csv` | One row per trajectory of the formal run (120): times, tokens, measured energy per component, estimates |
