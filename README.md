@@ -1,18 +1,3 @@
-# Trajectory Cost Function
-
-Scripts to measure the energy of LLM coding-agent trajectories and to estimate it with a cost function whose
-coefficients come from a microbenchmark.
-
-For a trajectory with model calls *i*, the cost function is
-
-```
-E = sum_i (alpha_u * u_i + alpha_c * c_i + beta * o_i + omega * t_i) + tool_avg * T_cmd + omega * (T_cmd + T_wait)
-```
-
-where `u_i`, `c_i` and `o_i` are the uncached input, cached input and output tokens of call *i*, `t_i` is its
-duration, `T_cmd` and `T_wait` are the time spent running commands and waiting between calls, and `omega` is the power
-of the machine with the model loaded but idle. `alpha_u`, `alpha_c` and `beta` are fitted on microbenchmark calls;
-`omega` is measured directly. `tool_avg` is set to zero in the current scripts.
 
 ## Requirements
 
