@@ -85,3 +85,7 @@ FlashInfer, 32K maximum context) are set and explained in `02_serve_vllm.sh` and
 | `results/trials_formal.csv` | One row per trajectory of the formal run (120): times, tokens, measured energy per component, estimates |
 
 Raw sampler, proxy and terminal-recording files are not included because of their size.
+
+## License
+
+MIT License, see `LICENSE`.
