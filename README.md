@@ -29,6 +29,7 @@ Qwen/Qwen3-Coder-30B-A3B-Instruct-FP8 with tensor parallelism over both GPUs. Pa
 | `calibrate.py` | Energy per call from the counters, fit of the coefficients, figures |
 | `align_trial.py` | Splits a trajectory into model, command and waiting time and applies the cost function |
 | `energylib.py` | Energy between two timestamps from cumulative counters |
+| `evaluate.py` | Predictor comparison (RQ1), energy shares (RQ2), energy per accomplished goal, retry budget |
 | `dist_test.py` | Two-GPU communication check with short timeouts |
 
 ## Running the experiment
@@ -47,6 +48,7 @@ All scripts are run from the repository folder.
    Raw data goes to `data/traj/<task>__<policy>__r<rep>/`.
 8. Alignment and estimates:
    `.venv/bin/python align_trial.py data/traj/<trajectory dirs> --calib results/calib --out results/trials_formal.csv`
+9. Evaluation: `.venv/bin/python evaluate.py --trials results/trials_formal.csv --out results/eval`
 
 Context policies of Terminus-2 in `04_run_trial.sh`: `summarize-off` never summarizes, `summarize-8k` summarizes once
 the context exceeds about 8K tokens, and `summarize-on` is the agent default. Sampling uses the model defaults unless
@@ -69,7 +71,20 @@ FlashInfer, 32K maximum context) are set and explained in `02_serve_vllm.sh` and
 | `results/calib/calls_energy.csv` | Measured GPU and CPU energy of every microbenchmark call |
 | `results/trials_formal.csv` | One row per trajectory of the formal run (120): times, tokens, measured energy per component, estimates |
 
-Raw sampler, proxy and terminal-recording files are not included because of their size.
+Raw sampler, proxy and terminal-recording files are not included because of their size. They will be archived
+together with this repository on Zenodo upon acceptance.
+
+## Reproducing the results from the included data
+
+No GPU is needed. With Python 3 and `numpy`, `pandas` and `matplotlib`:
+
+```bash
+python evaluate.py --trials results/trials_formal.csv --out results/eval
+```
+
+This writes the predictor comparison (`rq1_predictors.csv`, `rq1_scatter.png`), the energy shares per task
+(`rq2_shares.csv`, `rq2_shares.png`), energy per accomplished goal per context policy (`configs.csv`) and the
+retry-budget analysis (`retry_budget.csv`) to `results/eval/`.
 
 ## License
 
