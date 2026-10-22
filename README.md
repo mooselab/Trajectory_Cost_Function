@@ -86,6 +86,18 @@ This writes the predictor comparison (`rq1_predictors.csv`, `rq1_scatter.png`), 
 (`rq2_shares.csv`, `rq2_shares.png`), energy per accomplished goal per context policy (`configs.csv`) and the
 retry-budget analysis (`retry_budget.csv`) to `results/eval/`.
 
+The calibration coefficients can be recomputed from the raw microbenchmark data in the same way:
+
+```bash
+python calibrate.py --samples data/calib/samples.csv --calls data/calib/calls.jsonl \
+  --idle-loaded data/calib/idle_loaded.csv --idle-bare data/calib/idle_bare.csv --out-dir results/calib_rerun
+```
+
+`results/calib_rerun/params.json` then matches `results/calib/params.json`.
+
+The per-trajectory table `results/trials_formal.csv` was produced by `align_trial.py` from the raw trajectory data,
+which is not included (see above), so that step cannot be re-run from this repository alone.
+
 ## License
 
 MIT License, see `LICENSE`.
